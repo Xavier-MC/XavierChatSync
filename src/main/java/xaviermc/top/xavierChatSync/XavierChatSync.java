@@ -69,7 +69,7 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                 String json = event.getJson();
                 JSONObject jsonObject = JSONObject.fromObject(json);
                 String rawMessage = jsonObject.optString("raw_message", "");
-                String textMessage = parseMessage(jsonObject);
+                String textMessage = parseMessage(jsonObject, event);
 
                 if (!msg.trim().isEmpty() && !textMessage.trim().isEmpty()) {
                     msg = formatMessage(event, msg, textMessage);
@@ -108,7 +108,7 @@ public class XavierChatSync extends JavaPlugin implements Listener {
         }
     }
 
-    private String parseMessage(JSONObject jsonObject) {
+    private String parseMessage(JSONObject jsonObject, GroupMessageEvent event) {
         StringBuilder textMessage = new StringBuilder();
         String imageUrl = null;
         JSONArray messageArray = jsonObject.optJSONArray("message");
@@ -139,16 +139,44 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                     case "reply":
                         textMessage.append("回复 ").append(messageObject.getJSONObject("data").optString("text", ""));
                         break;
+                    case "redbag":
+                        textMessage.append("[红包]");
+                        break;
+                    case "forward":
+                        textMessage.append("[合并转发]");
+                        break;
+                    case "record":
+                        textMessage.append("[语音消息]");
+                        break;
+                    case "viedo":
+                        textMessage.append("[短视频]");
+                        break;
+                    case "music":
+                        textMessage.append("[音乐]");
+                        break;
+                    case "at":
+                        String qq = messageObject.getJSONObject("data").optString("qq", "");
+                        String cardName = getCardNameFromQQ(event, qq);
+                        textMessage.append("@").append(cardName);
+                        break;
                 }
             }
         }
         return textMessage.toString();
     }
 
+    private String getCardNameFromQQ(GroupMessageEvent event, String qq) {
+        String playerName = BotBind.getBindPlayerName(qq);
+        if (playerName == null) {
+            return event.getSender_card();
+        }
+        return playerName;
+    }
+
     private String formatMessage(GroupMessageEvent event, String msg, String textMessage) {
         msg = msg.replace("{QQ}", String.valueOf(event.getUser_id()));
         msg = msg.replace("{NICK}", event.getSender_nickname());
-        msg = msg.replace("{CARD}",event.getSender_card());
+        msg = msg.replace("{CARD}", event.getSender_card());
         String playerName = BotBind.getBindPlayerName(String.valueOf(event.getUser_id()));
         OfflinePlayer binder = null;
         if (playerName == null) {
@@ -162,7 +190,7 @@ public class XavierChatSync extends JavaPlugin implements Listener {
         }
         msg = msg.replaceAll("§\\S", "");
         msg = msg.replace("__color__", "§");
-        msg = msg.replace("???", event.getSender_nickname());
+        msg = msg.replace("???", event.getSender_card());
         msg = msg.replace("{MSG}", textMessage);
         return msg;
     }
