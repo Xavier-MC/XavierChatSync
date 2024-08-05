@@ -7,6 +7,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -30,12 +31,12 @@ public class XavierChatSync extends JavaPlugin implements Listener {
     public void onEnable() {
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("XavierChatSync Loading");
+        getLogger().info(ChatColor.GREEN + "[XavierChatSync] Plugin enabled");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("XavierChatSync Unloaded");
+        getLogger().info(ChatColor.RED + "[XavierChatSync] Plugin disabled");
     }
 
     @EventHandler
@@ -45,6 +46,9 @@ public class XavierChatSync extends JavaPlugin implements Listener {
             if (msg != null && !msg.isEmpty()) {
                 msg = PlaceholderAPI.setPlaceholders(event.getPlayer(), msg);
                 sendGroupMessages(msg);
+                if (getConfig().getBoolean("debug")) {
+                    getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Player joined: " + event.getPlayer().getName());
+                }
             }
         });
     }
@@ -56,6 +60,9 @@ public class XavierChatSync extends JavaPlugin implements Listener {
             if (msg != null && !msg.isEmpty()) {
                 msg = PlaceholderAPI.setPlaceholders(event.getPlayer(), msg);
                 sendGroupMessages(msg);
+                if (getConfig().getBoolean("debug")) {
+                    getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Player quit: " + event.getPlayer().getName());
+                }
             }
         });
     }
@@ -68,12 +75,14 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                 msg = msg.replaceAll("&", "__color__");
                 String json = event.getJson();
                 JSONObject jsonObject = JSONObject.fromObject(json);
-                String rawMessage = jsonObject.optString("raw_message", "");
                 String textMessage = parseMessage(jsonObject, event);
 
                 if (!msg.trim().isEmpty() && !textMessage.trim().isEmpty()) {
                     msg = formatMessage(event, msg, textMessage);
                     Bukkit.broadcastMessage(msg);
+                    if (getConfig().getBoolean("debug")) {
+                        getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Group message received: " + textMessage);
+                    }
                 }
             }
         }
@@ -92,9 +101,13 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                     msg = PlaceholderAPI.setPlaceholders(player, msg);
                     msg = msg.replaceAll("§\\S", "");
                     sendGroupMessages(msg);
+                    if (getConfig().getBoolean("debug")) {
+                        getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Player chat: " + event.getMessage());
+                    }
                 }
             } catch (Exception e) {
                 if (getConfig().getBoolean("debug")) {
+                    getLogger().severe(ChatColor.RED + "[XavierChatSync] Error processing chat event: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -105,12 +118,15 @@ public class XavierChatSync extends JavaPlugin implements Listener {
         List<Long> groups = getConfig().getLongList("groups");
         for (Long group : groups) {
             BotAction.sendGroupMessage(group, msg, new boolean[]{true});
+            if (getConfig().getBoolean("debug")) {
+                getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Sent group message to group " + group + ": " + msg);
+            }
         }
     }
 
     private String parseMessage(JSONObject jsonObject, GroupMessageEvent event) {
         StringBuilder textMessage = new StringBuilder();
-        String imageUrl = null;
+        String imageUrl;
         JSONArray messageArray = jsonObject.optJSONArray("message");
         if (messageArray != null) {
             for (int i = 0; i < messageArray.size(); i++) {
@@ -139,20 +155,14 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                     case "reply":
                         textMessage.append("回复 ").append(messageObject.getJSONObject("data").optString("text", ""));
                         break;
-                    case "redbag":
-                        textMessage.append("[红包]");
-                        break;
                     case "forward":
                         textMessage.append("[合并转发]");
                         break;
                     case "record":
                         textMessage.append("[语音消息]");
                         break;
-                    case "viedo":
+                    case "video":
                         textMessage.append("[短视频]");
-                        break;
-                    case "music":
-                        textMessage.append("[音乐]");
                         break;
                     case "at":
                         String qq = messageObject.getJSONObject("data").optString("qq", "");
@@ -202,7 +212,13 @@ public class XavierChatSync extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         reloadConfig();
-        sender.sendMessage("§7[§bXavierChatSync§7] §a配置文件已经重新载入!");
+        if (sender instanceof Player) {
+            sender.sendMessage("§7[§bXavierChatSync§7] §a配置文件已经重新载入!");
+            getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Configuration reloaded by " + sender.getName());
+        } else {
+            sender.sendMessage("§7[§bXavierChatSync§7] §a配置文件已经重新载入!");
+            getLogger().info(ChatColor.YELLOW + "[XavierChatSync] Configuration reloaded by console");
+        }
         return true;
     }
 }
