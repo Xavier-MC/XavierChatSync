@@ -20,10 +20,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import xaviermc.top.xavierChatSync.metrics.Metrics;
 
 import java.util.List;
-
-import static org.apache.commons.lang.StringUtils.replace;
 
 public class XavierChatSync extends JavaPlugin implements Listener {
 
@@ -32,6 +31,15 @@ public class XavierChatSync extends JavaPlugin implements Listener {
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info(ChatColor.GREEN + "[XavierChatSync] Plugin enabled");
+        String version =getConfig().getString("config-version");
+        if (version == null || !version.equals("1.0.0")) {
+            getLogger().warning(ChatColor.RED + "[XavierChatSync] 配置文件版本不匹配，请删除旧配置文件后重载插件");
+        }
+        if (getConfig().getBoolean("bstats")){
+            int pluginId = 22894;
+            Metrics metrics = new Metrics(this, pluginId);
+            metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
+        }
     }
 
     @Override
