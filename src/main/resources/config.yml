@@ -1,16 +1,11 @@
 #启用的群
 groups:
   - "965325092"
-#自定义玩家进服,退出服务器向Q群发送的信息
-#不启用请设置为空
 join_msg: "玩家%player_name%加入了服务器"
 quit_msg: "玩家%player_name%离开了服务器"
-#玩家游戏聊天时向Q群发送的信息
-#支持Papi变量 {MSG}为信息
-#不启用请设置为空
 group_chat_msg: "<%player_name%>: {MSG}"
-#Q群聊天时向游戏发送的信息
-#{QQ}:QQ号码, {NICK}:群昵称, {PLAYER}:QQ绑定的玩家(未绑定则显示群名片)
-#不启用请设置为空
-game_chat_msg: "&7[QQ群] {PLAYER}: {MSG}"
+#{QQ}:QQ号码, {NICK}:QQ昵称, {PLAYER}:QQ绑定的玩家(未绑定则显示群名片)
+game_chat_msg: "&7[QQ群] {CARD}: {MSG}"
+future:
+  supported_ChatImage: false
 debug: false
