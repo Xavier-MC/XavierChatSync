@@ -2,19 +2,21 @@
 
 <img src="https://krseoul.imgtbl.com/i/2024/08/05/66b0b6f413380.jpeg" alt="logo" width="100" height="100">
 
-_一个用于同步 Minecraft 服务器聊天与 QQ 群消息的插件。_
+_一个用于同步 Minecraft 服务器聊天与 QQ 群消息的强大插件。_
+
+[中文](README_CN.MD)|[English](README.MD)
 
 ### 警告
 
-- 本插件是 **XinxinBotApi** 的附属插件，支持更多类型的Q群消息转发。
-- 请在使用本插件之前，先行配置好**前置**[XinxinBotApi](https://bbs.mcxin.cn/archives/216)。
+- 本插件是 **XinxinBotApi** 的附属插件，支持更多类型的 QQ 群消息转发。
+- 在使用本插件前，请先配置好**前置插件** [XinxinBotApi](https://bbs.mcxin.cn/archives/216)。
 
 ### 功能特点
 
-- **双向消息同步**：支持将 Minecraft 服务器的聊天信息同步到 QQ 群，同时也可以将 QQ 群的消息同步到 Minecraft 服务器。
-- **自定义加入/离开信息**：当玩家加入或离开服务器时，可发送自定义消息至 QQ 群。
-- **多类型消息支持**：能够处理 QQ 群中的**图片**、**表情**、**文件**、**回复**、**合并转发**、**@** 等多种类型的消息。
-- **模组适配**：支持与其他模组适配，如 [ChatImage](https://modrinth.com/mod/chatimage/) 等，用于让Java版玩家在服内实时查看照片。
+- **双向消息同步**：支持将 Minecraft 服务器的聊天信息同步到 QQ 群，反之亦然。
+- **自定义加入/离开信息**：当玩家加入或离开服务器时，可以向 QQ 群发送自定义消息。
+- **多类型消息支持**：能够处理 QQ 群中的**图片**、**表情**、**文件**、**回复**、**合并转发**、**@** 等多种类型消息。
+- **模组适配**：支持与其他模组适配，如 [ChatImage](https://modrinth.com/mod/chatimage/)，Java版玩家可以在游戏内实时查看图片。
 
 ### 前置插件
 
@@ -24,28 +26,20 @@ _一个用于同步 Minecraft 服务器聊天与 QQ 群消息的插件。_
 ### 图片展示
 
 ![.png](https://s2.loli.net/2024/08/06/fkdsNhADUqpQ6En.png)
-
 ![.png](https://s2.loli.net/2024/08/06/tv8RukbgYVwncdD.png)
-
 ![.png](https://s2.loli.net/2024/08/06/Uyq8dHAQzjr4Tax.png)
-
 ![.png](https://s2.loli.net/2024/08/06/1lwJ6xtRQsnD3GE.png)
-
 ![.png](https://s2.loli.net/2024/08/06/2eQsTKUmHd1F3WJ.png)
-
 ![.png](https://s2.loli.net/2024/08/06/TvsdNhcPr528B6X.png)
-
 ![.png](https://s2.loli.net/2024/08/06/HaJoLlZVkhGXwer.png)
-
 ![.png](https://s2.loli.net/2024/08/06/yXBf7QehJRNcDdA.png)
-
 ![.png](https://s2.loli.net/2024/08/06/YOIn5VrswkDeazR.png)
 
 ## 指令
 
-- `/xavierchatsync reload`：重新加载插件的配置文件。
+- `/xavierchatsync reload`：重新加载插件配置文件。
 
-> 可简写为 `/xcs reload`
+> 简写：`/xcs reload`
 
 ### 配置文件
 
@@ -70,3 +64,9 @@ bstats: true
 [![](https://bstats.org/signatures/bukkit/XavierChatSync.svg)](https://bstats.org/plugin/bukkit/XavierChatSync/22894)
 
 **如有任何问题或建议，欢迎联系作者或提交 Issue。**
+
+### 特别鸣谢
+
+本插件基于**xinxinchatsync**开发，特别感谢原作者的大力支持。
+
+![.jpg](https://s2.loli.net/2024/08/15/1qG5ZMKARvnlBgC.jpg)

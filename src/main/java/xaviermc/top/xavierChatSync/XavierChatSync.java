@@ -77,7 +77,7 @@ public class XavierChatSync extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onGroup(GroupMessageEvent event) {
-        if (getConfig().getLongList("groups").contains(event.getGroup_id())) {
+        if (getConfig().getLongList("groups").contains(Long.valueOf(event.getGroup_id()))) {
             String msg = getConfig().getString("game_chat_msg");
             if (msg != null) {
                 msg = msg.replaceAll("&", "__color__");
@@ -173,9 +173,14 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                         textMessage.append("[短视频]");
                         break;
                     case "at":
-                        String qq = messageObject.getJSONObject("data").optString("qq", "");
-                        String cardName = getCardNameFromQQ(event, qq);
-                        textMessage.append("@").append(cardName);
+                        String name = messageObject.getJSONObject("data").optString("name", "");
+                        if (name == null){
+                            name = getCardNameFromQQ(event, messageObject.getJSONObject("data").optString("qq", ""));
+                        }
+                        if (name == null){
+                            name = messageObject.getJSONObject("data").optString("qq", "");
+                        }
+                        textMessage.append("@").append(name);
                         break;
                 }
             }
@@ -185,9 +190,6 @@ public class XavierChatSync extends JavaPlugin implements Listener {
 
     private String getCardNameFromQQ(GroupMessageEvent event, String qq) {
         String playerName = BotBind.getBindPlayerName(qq);
-        if (playerName == null) {
-            return event.getSender_card();
-        }
         return playerName;
     }
 
@@ -203,9 +205,7 @@ public class XavierChatSync extends JavaPlugin implements Listener {
             binder = Bukkit.getOfflinePlayer(playerName);
         }
         msg = msg.replace("{PLAYER}", playerName);
-        if (binder != null) {
-            msg = PlaceholderAPI.setPlaceholders(binder, msg);
-        }
+        msg = PlaceholderAPI.setPlaceholders(binder, msg);
         msg = msg.replaceAll("§\\S", "");
         msg = msg.replace("__color__", "§");
         msg = msg.replace("???", event.getSender_card());
