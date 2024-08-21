@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'xaviermc.top'
-version = '1.4.1-SNAPSHOT'
+version = '1.4.2-SNAPSHOT'
 
 repositories {
     mavenLocal()
@@ -41,6 +41,7 @@ dependencies {
     compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
     compileOnly 'me.clip:placeholderapi:2.11.6'
     implementation(files("libs/XinxinBotApi-2.1.0-SNAPSHOT.jar"))
+    implementation("com.moandjiezana.toml:toml4j:0.7.2")
 }
 
 def targetJavaVersion = 8

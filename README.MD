@@ -67,6 +67,6 @@ bstats: true
 
 ### Special Thanks
 
-This plugin is developed based on **xinxinchatsync**. Special thanks to the original author for their strong support.
+This plugin is developed based on **xinxinchatsync v1.0.2**. Special thanks to the original author for their strong support.
 
 ![.jpg](https://s2.loli.net/2024/08/15/1qG5ZMKARvnlBgC.jpg)

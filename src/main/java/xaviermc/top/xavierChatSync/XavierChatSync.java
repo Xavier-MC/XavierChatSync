@@ -32,7 +32,7 @@ public class XavierChatSync extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info(ChatColor.GREEN + "[XavierChatSync] Plugin enabled");
         String version =getConfig().getString("config-version");
-        if (version == null || !version.equals("1.0.0")) {
+        if (version == null || !version.equals("2.0.0")) {
             getLogger().warning(ChatColor.RED + "[XavierChatSync] 配置文件版本不匹配，请删除旧配置文件后重载插件");
         }
         if (getConfig().getBoolean("bstats")){
@@ -105,7 +105,14 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                 Player player = event.getPlayer();
                 String msg = getConfig().getString("group_chat_msg");
                 if (msg != null && !msg.trim().isEmpty()) {
-                    msg = msg.replace("{MSG}", formatMsg(event.getMessage()));
+                    String text = formatMsg(event.getMessage());
+                    if (getConfig().getBoolean("future.mc2qq_message_truncation.enabled")) {
+                        int maxLength = getConfig().getInt("future.mc2qq_message_truncation.max_length");
+                        if (text.length() > maxLength) {
+                            text = text.substring(0, maxLength) + getConfig().getString("future.qq2mc_message_truncation.truncation_notice");
+                        }
+                    }
+                    msg = msg.replace("{MSG}", text);
                     msg = PlaceholderAPI.setPlaceholders(player, msg);
                     msg = msg.replaceAll("§\\S", "");
                     sendGroupMessages(msg);
@@ -142,7 +149,14 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                 String type = messageObject.optString("type");
                 switch (type) {
                     case "text":
-                        textMessage.append(messageObject.getJSONObject("data").optString("text", ""));
+                        String text = messageObject.getJSONObject("data").optString("text", "");
+                        if (getConfig().getBoolean("future.qq2mc_message_truncation.enabled")) {
+                            int maxLength = getConfig().getInt("future.qq2mc_message_truncation.max_length");
+                            if (text.length() > maxLength) {
+                                text = text.substring(0, maxLength) + getConfig().getString("future.qq2mc_message_truncation.truncation_notice");
+                            }
+                        }
+                        textMessage.append(text);
                         break;
                     case "image":
                         if (getConfig().getBoolean("future.supported_ChatImage")) {

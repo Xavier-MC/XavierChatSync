@@ -1,5 +1,5 @@
 name: XavierChatSync
-version: '1.4.1-SNAPSHOT'
+version: ${version}
 main: xaviermc.top.xavierChatSync.XavierChatSync
 depend: [XinxinBotApi,PlaceholderAPI]
 authors: [CerealAxis]

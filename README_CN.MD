@@ -67,6 +67,6 @@ bstats: true
 
 ### 特别鸣谢
 
-本插件基于**xinxinchatsync**开发，特别感谢原作者的大力支持。
+本插件基于**xinxinchatsync v1.0.2版本**开发，特别感谢原作者的大力支持。
 
 ![.jpg](https://s2.loli.net/2024/08/15/1qG5ZMKARvnlBgC.jpg)
