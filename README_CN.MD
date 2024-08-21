@@ -44,17 +44,23 @@ _一个用于同步 Minecraft 服务器聊天与 QQ 群消息的强大插件。_
 ### 配置文件
 
 ```yaml
-config-version: 1.0.0
+config-version: 2.0.0
 groups:
   - "965325092"
-join_msg: "玩家 %player_name% 加入了服务器"
-quit_msg: "玩家 %player_name% 离开了服务器"
+join_msg: "玩家%player_name%加入了服务器"
+quit_msg: "玩家%player_name%离开了服务器"
 group_chat_msg: "<%player_name%>: {MSG}"
-#{QQ}: QQ号码, {NICK}: QQ昵称, {CARD}: 群昵称，{PLAYER}: QQ绑定的玩家（未绑定则显示群昵称）
 game_chat_msg: "&7[QQ群] {CARD}: {MSG}"
 future:
   supported_ChatImage: true
-  # 启用此模式后，服务器内的图片信息会解析为 ChatImage 模组能解析的图片信息并转发至服务器中。安装此模组的玩家可在服务器内显示图片。
+  qq2mc_message_truncation:
+    enabled: true
+    max_length: 30
+    truncation_notice: "[原消息过长已自动截断]"
+  mc2qq_message_truncation:
+    enabled: true
+    max_length: 30
+    truncation_notice: "[原消息过长已自动截断]"
 debug: false
 bstats: true
 ```

@@ -44,17 +44,23 @@ _A powerful plugin for synchronizing chat messages between Minecraft servers and
 ### Configuration File
 
 ```yaml
-config-version: 1.0.0
+config-version: 2.0.0
 groups:
   - "965325092"
-join_msg: "Player %player_name% has joined the server"
-quit_msg: "Player %player_name% has left the server"
+join_msg: "玩家%player_name%加入了服务器"
+quit_msg: "玩家%player_name%离开了服务器"
 group_chat_msg: "<%player_name%>: {MSG}"
-#{QQ}: QQ Number, {NICK}: QQ Nickname, {CARD}: Group Nickname, {PLAYER}: Player bound to QQ (shows group nickname if unbound)
-game_chat_msg: "&7[QQ Group] {CARD}: {MSG}"
+game_chat_msg: "&7[QQ群] {CARD}: {MSG}"
 future:
   supported_ChatImage: true
-  # When this mode is enabled, image information within the server will be parsed into a format that the ChatImage mod can interpret and forwarded to the server. Players with this mod installed can view images within the server.
+  qq2mc_message_truncation:
+    enabled: true
+    max_length: 30
+    truncation_notice: "[原消息过长已自动截断]"
+  mc2qq_message_truncation:
+    enabled: true
+    max_length: 30
+    truncation_notice: "[原消息过长已自动截断]"
 debug: false
 bstats: true
 ```
