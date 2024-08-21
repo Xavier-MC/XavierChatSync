@@ -51,6 +51,7 @@ join_msg: "玩家%player_name%加入了服务器"
 quit_msg: "玩家%player_name%离开了服务器"
 group_chat_msg: "<%player_name%>: {MSG}"
 game_chat_msg: "&7[QQ群] {CARD}: {MSG}"
+#{QQ}: QQ号码, {NICK}: QQ昵称, {CARD}: 群昵称，{PLAYER}: QQ绑定的玩家（未绑定则显示群昵称）
 future:
   supported_ChatImage: true
   qq2mc_message_truncation:
