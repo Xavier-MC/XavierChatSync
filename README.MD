@@ -41,7 +41,7 @@ _A powerful plugin for synchronizing chat messages between Minecraft servers and
 
 > Shortened command: `/xcs reload`
 
-### Configuration File
+### Config
 
 ```yaml
 config-version: 2.0.0
@@ -65,6 +65,15 @@ future:
 debug: false
 bstats: true
 ```
+
+### Download
+
+- Stable Version
+    - [GitHub Releases](https://github.com/Xavier-MC/XavierChatSync/releases)
+    - [MineBBS](https://www.minebbs.com/resources/xavierchatsync-minecraft-qq.9115/)
+    - [Hangar](https://hangar.papermc.io/CerealAxis/XavierChatSync/)
+- Development Version
+    - [GitHub Actions CI](https://github.com/Xavier-MC/XavierChatSync/actions/workflows/dev-build.yml?query=is%3Asuccess)
 
 ### Statistics
 

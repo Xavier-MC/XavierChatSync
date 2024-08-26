@@ -66,6 +66,16 @@ debug: false
 bstats: true
 ```
 
+### 下载
+
+- 稳定版
+    - [GitHub Releases](https://github.com/Xavier-MC/XavierChatSync/releases)
+    - [MineBBS](https://www.minebbs.com/resources/xavierchatsync-minecraft-qq.9115/)
+    - [Hangar](https://hangar.papermc.io/CerealAxis/XavierChatSync/)
+- 开发版
+    - [GitHub Actions CI](https://github.com/Xavier-MC/XavierChatSync/actions/workflows/dev-build.yml?query=is%3Asuccess)
+
+
 ### 统计信息
 
 [![](https://bstats.org/signatures/bukkit/XavierChatSync.svg)](https://bstats.org/plugin/bukkit/XavierChatSync/22894)
