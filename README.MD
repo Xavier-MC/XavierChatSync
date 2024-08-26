@@ -4,7 +4,7 @@
 
 _A powerful plugin for synchronizing chat messages between Minecraft servers and QQ groups._
 
-[中文](README_CN.MD)|[English](README.MD)
+[中文](README_CN.MD) | [English](README.MD)
 
 ### Warning
 

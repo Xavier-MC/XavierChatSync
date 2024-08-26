@@ -188,10 +188,10 @@ public class XavierChatSync extends JavaPlugin implements Listener {
                         break;
                     case "at":
                         String name = messageObject.getJSONObject("data").optString("name", "");
-                        if (name == null){
+                        if (name.isEmpty()) {
                             name = getCardNameFromQQ(event, messageObject.getJSONObject("data").optString("qq", ""));
                         }
-                        if (name == null){
+                        if (name.isEmpty()) {
                             name = messageObject.getJSONObject("data").optString("qq", "");
                         }
                         textMessage.append("@").append(name);

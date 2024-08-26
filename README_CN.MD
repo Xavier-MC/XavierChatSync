@@ -4,7 +4,7 @@
 
 _一个用于同步 Minecraft 服务器聊天与 QQ 群消息的强大插件。_
 
-[中文](README_CN.MD)|[English](README.MD)
+[中文](README_CN.MD) | [English](README.MD)
 
 ### 警告
 
