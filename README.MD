@@ -4,8 +4,8 @@
 
 _A powerful plugin for synchronizing chat messages between Minecraft servers and QQ groups._
 
-[![GitHub release](https://img.shields.io/github/v/release/Xavier-MC/XavierChatSync?style=flat-square)](https://github.com/MC-XiaoHei/ISeeYou/releases)
-[![GitHub Actions CI](https://img.shields.io/github/actions/workflow/status/Xavier-MC/XavierChatSync/release.yml?style=flat-square)](https://github.com/MC-XiaoHei/ISeeYou/actions)
+[![GitHub release](https://img.shields.io/github/v/release/Xavier-MC/XavierChatSync?style=flat-square)](https://github.com/Xavier-MC/XavierChatSync/releases)
+[![GitHub Actions CI](https://img.shields.io/github/actions/workflow/status/Xavier-MC/XavierChatSync/release.yml?style=flat-square)](https://github.com/Xavier-MC/XavierChatSync/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/Xavier-MC/XavierChatSync/blob/master/LICENSE)
 
 [中文](README_CN.MD) | [English](README.MD)
