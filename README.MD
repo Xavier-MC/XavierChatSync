@@ -4,6 +4,10 @@
 
 _A powerful plugin for synchronizing chat messages between Minecraft servers and QQ groups._
 
+[![GitHub release](https://img.shields.io/github/v/release/Xavier-MC/XavierChatSync?style=flat-square)](https://github.com/MC-XiaoHei/ISeeYou/releases)
+[![GitHub Actions CI](https://img.shields.io/github/actions/workflow/status/Xavier-MC/XavierChatSync/release.yml?style=flat-square)](https://github.com/MC-XiaoHei/ISeeYou/actions)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/Xavier-MC/XavierChatSync/blob/master/LICENSE)
+
 [中文](README_CN.MD) | [English](README.MD)
 
 ### Warning
@@ -35,7 +39,7 @@ _A powerful plugin for synchronizing chat messages between Minecraft servers and
 ![.png](https://s2.loli.net/2024/08/06/yXBf7QehJRNcDdA.png)
 ![.png](https://s2.loli.net/2024/08/06/YOIn5VrswkDeazR.png)
 
-## Commands
+### Commands
 
 - `/xavierchatsync reload`: Reloads the plugin configuration file.
 
@@ -79,7 +83,7 @@ bstats: true
 
 [![](https://bstats.org/signatures/bukkit/XavierChatSync.svg)](https://bstats.org/plugin/bukkit/XavierChatSync/22894)
 
-**If you have any questions or suggestions, feel free to contact the author or submit an issue.**
+**If you have any questions or suggestions, feel free to contact the author at  [Github](https://github.com/Xavier-MC/XavierChatSync/issues) .**
 
 ### Special Thanks
 
